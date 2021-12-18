@@ -1,7 +1,7 @@
 {
   "name": "@rizzzse/bimap",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple and tiny bi-directional map that extends ES2015's Map.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.js",
@@ -15,7 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/rizzzse/bimap.git"
   },
-  "keywords": [],
+  "keywords": ["map", "bimap", "bidirectional"],
   "author": "rizzzse <rizzzse@gmail.com>",
   "license": "MIT",
   "bugs": {
