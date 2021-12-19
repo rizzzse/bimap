@@ -3,6 +3,9 @@
 A simple and tiny bi-directional map that extends ES2015's Map.
 
 ```ts
+// cjs
+const { BiMap } = require("@rizzzse/bimap");
+// esm
 import { BiMap } from "@rizzzse/bimap";
 
 const bimap = new BiMap([["key", "value"]]);
