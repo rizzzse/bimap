@@ -1,6 +1,7 @@
 # bimap
 
 A simple and tiny bi-directional map that extends ES2015's Map.
+BiMap can be operated with the same interface as Map, and you can get an inverted BiMap with `inverse`.
 
 ```ts
 // cjs
