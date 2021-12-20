@@ -5,6 +5,7 @@
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.js",
+  "files": ["dist"],
   "scripts": {
     "build:esm": "esbuild src/index.ts --bundle --outfile=dist/index.esm.js --format=esm",
     "build:cjs": "esbuild src/index.ts --bundle --outfile=dist/index.js",
