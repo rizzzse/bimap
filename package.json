@@ -1,11 +1,13 @@
 {
   "name": "@rizzzse/bimap",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A simple and tiny bi-directional map that extends ES2015's Map.",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build:esm": "esbuild src/index.ts --bundle --outfile=dist/index.esm.js --format=esm",
     "build:cjs": "esbuild src/index.ts --bundle --outfile=dist/index.js",
@@ -16,7 +18,11 @@
     "type": "git",
     "url": "git+https://github.com/rizzzse/bimap.git"
   },
-  "keywords": ["map", "bimap", "bidirectional"],
+  "keywords": [
+    "map",
+    "bimap",
+    "bidirectional"
+  ],
   "author": "rizzzse <rizzzse@gmail.com>",
   "license": "MIT",
   "bugs": {
