@@ -7,7 +7,7 @@ export class BiMap<K, V> extends Map<K, V> {
         if(iterable instanceof BiMap && !iterable.inverse) {
             this.inverse = iterable;
         } else {
-            this.inverse = new BiMap(this as unknown as []);
+            this.inverse = new new.target(this as unknown as []);
             if(iterable != null) {
                 for(const { 0: key, 1: value } of iterable) {
                     this.set(key, value);

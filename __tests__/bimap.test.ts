@@ -5,6 +5,14 @@ test("!!bimap == bimap", () => {
     expect(bimap.inverse.inverse).toBe(bimap);
 });
 
+test("extends should also be extended to 'inverse'.", () => {
+    class MyBiMap<K, V> extends BiMap<K, V> {
+        declare readonly inverse: MyBiMap<V, K>;
+    }
+    const bimap = new MyBiMap();
+    expect(bimap.inverse).toBeInstanceOf(MyBiMap);
+});
+
 describe("delete", () => {
     test("a value should also be deleted from 'inverse'.", () => {
         const bimap = new BiMap([["key", "value"]]);

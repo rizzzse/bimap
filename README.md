@@ -17,3 +17,12 @@ bimap.has("key");           // === false
 bimap.get("key2");          // === "value"
 bimap.inverse.get("value"); // === "key2"
 ```
+
+```ts
+class MyBiMap<K, V> extends BiMap<K, V> {
+    declare readonly inverse: MyBiMap<V, K>;
+    myMethod() {
+        // ...
+    }
+}
+```
