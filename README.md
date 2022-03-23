@@ -5,9 +5,9 @@ BiMap can be operated with the same interface as Map, and you can get an inverte
 
 ```ts
 // cjs
-const { BiMap } = require("@rizzzse/bimap");
+const { BiMap, WeakBiMap } = require("@rizzzse/bimap");
 // esm
-import { BiMap } from "@rizzzse/bimap";
+import { BiMap, WeakBiMap } from "@rizzzse/bimap";
 
 const bimap = new BiMap([["key", "value"]]);
 bimap.get("key");           // === "value"
