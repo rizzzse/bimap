@@ -35,7 +35,7 @@ export class BiMap<K, V> extends Map<K, V> {
 
 const { delete: weakDelete, set: weakSet } = WeakMap.prototype;
 
-type WeakMapConstraint = any extends WeakMap<infer T, any> ? T : never;
+export type WeakMapConstraint = any extends WeakMap<infer T, any> ? T : never;
 
 export class WeakBiMap<
     K extends WeakMapConstraint,

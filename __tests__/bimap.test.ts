@@ -1,4 +1,4 @@
-import { BiMap, WeakBiMap } from "../src/bimap";
+import { BiMap, WeakBiMap, WeakMapConstraint } from "../src/bimap";
 
 describe.each([
     { BiMap },
@@ -9,7 +9,10 @@ describe.each([
         expect(bimap.inverse.inverse).toBe(bimap);
     });
     test("extends should also be extended to 'inverse'.", () => {
-        class MyBiMap<K extends object, V extends object> extends BiMap<K, V> {
+        class MyBiMap<
+            K extends WeakMapConstraint,
+            V extends WeakMapConstraint,
+        > extends BiMap<K, V> {
             declare readonly inverse: MyBiMap<V, K>;
         }
         const bimap = new MyBiMap();
@@ -102,7 +105,7 @@ describe("WeakBiMap", () => {
             expect(bimap.inverse.get(o("value"))).toBe(o("hogera"));
             expect(bimap.has(o("hoge"))).toBe(false);
         });
-        test.each<() => Iterable<[object, object]>>([
+        test.each<() => Iterable<[WeakMapConstraint, WeakMapConstraint]>>([
             () => [[o(1), o(1)], [o(2), o(2)]],
             function*() {
                 for(let i = 0; i < 10; i++) yield [o(i), o(i)];
