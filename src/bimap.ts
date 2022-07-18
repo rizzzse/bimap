@@ -1,3 +1,5 @@
+import { equals } from "emnorst";
+
 const { clear: mapClear, delete: mapDelete, set: mapSet } = Map.prototype;
 
 export class BiMap<K, V> extends Map<K, V> {
@@ -25,8 +27,15 @@ export class BiMap<K, V> extends Map<K, V> {
             && mapDelete.call(this.inverse, val);
     }
     override set(key: K, val: V): this {
-        this.delete(key);
-        this.inverse.delete(val);
+        if(this.has(key)) {
+            const kval = this.get(key)!;
+            if(equals(kval, val)) return this;
+            mapDelete.call(this.inverse, kval);
+        }
+        if(this.inverse.has(val)) {
+            const vkey = this.inverse.get(val)!;
+            mapDelete.call(this, vkey);
+        }
         mapSet.call(this, key, val);
         mapSet.call(this.inverse, val, key);
         return this;

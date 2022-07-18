@@ -53,6 +53,17 @@ describe("BiMap", () => {
             expect(bimap.size).toBe(1);
             expect(bimap.inverse.size).toBe(1);
         });
+        test("enumerate in insertion order.", () => {
+            const bimap = new BiMap();
+            bimap.set("hoge", "value");
+            bimap.set("fuga", "fugafugafuga");
+            bimap.set("hoge", "value");
+            bimap.set("hoge", "piyo");
+            expect([...bimap]).toEqual([
+                ["hoge", "piyo"],
+                ["fuga", "fugafugafuga"],
+            ]);
+        });
         test.each<() => Iterable<[unknown, unknown]>>([
             () => [[1, 1], [2, 2]],
             function*() {
