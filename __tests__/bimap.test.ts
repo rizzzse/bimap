@@ -84,7 +84,7 @@ describe("WeakBiMap", () => {
             if(!cache.has(value)) {
                 cache.set(value, { value });
             }
-            return cache.get(value);
+            return cache.get(value)!;
         };
     });
     describe("delete", () => {
