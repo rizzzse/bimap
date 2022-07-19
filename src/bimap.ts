@@ -73,8 +73,11 @@ export class WeakBiMap<
         if(!isObject(key) || !isObject(val)) {
             throw new TypeError("Invalid value used as weak map key");
         }
-        this.delete(key);
-        this.inverse.delete(val);
+        const kval = this.get(key);
+        if(kval === val) return this;
+        if(kval !== undefined) weakDelete.call(this.inverse, kval);
+        const vkey = this.inverse.get(val);
+        if(vkey !== undefined) weakDelete.call(this, vkey);
         weakSet.call(this, key, val);
         weakSet.call(this.inverse, val, key);
         return this;
