@@ -1,4 +1,4 @@
-import { equals } from "emnorst";
+import { equals, isObject } from "emnorst";
 
 const { clear: mapClear, delete: mapDelete, set: mapSet } = Map.prototype;
 
@@ -70,6 +70,9 @@ export class WeakBiMap<
             && weakDelete.call(this.inverse, val!);
     }
     override set(key: K, val: V): this {
+        if(!isObject(key) || !isObject(val)) {
+            throw new TypeError("Invalid value used as weak map key");
+        }
         this.delete(key);
         this.inverse.delete(val);
         weakSet.call(this, key, val);

@@ -116,6 +116,15 @@ describe("WeakBiMap", () => {
             expect(bimap.inverse.get(o("value"))).toBe(o("hogera"));
             expect(bimap.has(o("hoge"))).toBe(false);
         });
+        test("set primitive value should not change Map.", () => {
+            const bimap = new WeakBiMap();
+            bimap.set(o("key"), o("value"));
+            expect(() => {
+                bimap.set(o("key"), "primitive" as {});
+            }).toThrow(TypeError);
+            expect(bimap.get(o("key"))).toBe(o("value"));
+            expect(bimap.inverse.get(o("value"))).toBe(o("key"));
+        });
         test.each<() => Iterable<[WeakMapConstraint, WeakMapConstraint]>>([
             () => [[o(1), o(1)], [o(2), o(2)]],
             function*() {
